@@ -10,27 +10,7 @@ dotenv.config();
 
 const app = express();
 app.use(express.json());
-app.use(cors({
-    origin: 'https://notesapp-teal-kappa.vercel.app', 
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization'], 
-    credentials: true,
-  }));
-
-  app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "https://notesapp-teal-kappa.vercel.app");
-    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-    res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
-    res.header("Access-Control-Allow-Credentials", "true");
-    
-    if (req.method === "OPTIONS") {
-        return res.sendStatus(200); // Handle preflight requests
-    }
-
-    next();
-});
-
-  
+app.use(cors());
 
 // Routes
 app.use("/api", authRoutes);
@@ -40,7 +20,7 @@ connectDB();
 
 // Start the server
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
     console.log(`Server is running at http://localhost:${PORT}`);
