@@ -19,6 +19,9 @@ app.use("/api", notesRoutes);
 connectDB();
 
 // Start the server
-app.listen(8080, () => {
-    console.log("Server is running at http://localhost:8080");
+
+const PORT = process.env.PORT || 8080;
+
+app.listen(PORT, () => {
+    console.log(`Server is running at http://localhost:${PORT}`);
 });
