@@ -16,8 +16,8 @@ app.use(cors());
 swaggerDocs(app);
 
 // Routes
-app.use("/api/auth", authRoutes);
-app.use("/api/auth", notesRoutes);
+app.use("/api/", authRoutes);
+app.use("/api/", notesRoutes);
 
 
 // Connect to MongoDB
