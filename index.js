@@ -5,16 +5,21 @@ const cors = require("cors");
 const connectDB = require("./config/db");
 const authRoutes = require("./routes/authRoutes");
 const notesRoutes = require("./routes/noteRoutes");
-
+const swaggerDocs = require("./swagger");
 dotenv.config();
 
 const app = express();
 app.use(express.json());
 app.use(cors());
 
+// Swagger Docs
+swaggerDocs(app);
+
 // Routes
-app.use("/api", authRoutes);
-app.use("/api", notesRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/auth", notesRoutes);
+
+
 // Connect to MongoDB
 connectDB();
 
